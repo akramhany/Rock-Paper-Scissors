@@ -1,3 +1,4 @@
+//returns a random choice of Rock, Paper and Scissors
 function getComputerChoice() {
     let randomNum = Math.floor(Math.random() * 3);
     if (randomNum == 0)
@@ -8,6 +9,7 @@ function getComputerChoice() {
         return "Scissors";
 }
 
+//It takes two arguments, the player selection and the computer selection then it determine who wins 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
     computerSelection = computerSelection.toLowerCase();
@@ -40,11 +42,13 @@ function playRound(playerSelection, computerSelection) {
     return theWinner;
 }
 
+//the main function of the game
 function game() {
 
     let playerScore = 0;
     let computerScore = 0;
 
+    //loop for the number of rounds, ask the user for its choice and compare it with the computers' choice then change the scores
     for (let i = 0; i < 5; i++)
     {
         let playerSelection = prompt("Choose something: ");
@@ -57,6 +61,7 @@ function game() {
             computerScore++;
     }
 
+    //compare the scores of the player and the computer to determine who won
     if (playerScore > computerScore)
         console.log("Player Won YeeeeeeeeeeeeeY");
     else if (computerScore > playerScore)
