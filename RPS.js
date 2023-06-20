@@ -48,28 +48,16 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
 
-    //loop for the number of rounds, ask the user for its choice and compare it with the computers' choice then change the scores
-    for (let i = 0; i < 5; i++)
-    {
-        let playerSelection = prompt("Choose something: ");
-        let computerChoice = getComputerChoice();
-        
-        let theWinner = playRound(playerSelection, computerChoice).toLowerCase();
-        if (theWinner == "player")
-            playerScore++;
-        else if (theWinner == "computer")
-            computerScore++;
-    }
+    
 
     //compare the scores of the player and the computer to determine who won
-    if (playerScore > computerScore)
+    if (playerScore === 5)
         console.log("Player Won YeeeeeeeeeeeeeY");
-    else if (computerScore > playerScore)
+    else if (computerScore === 5)
         console.log("Computer Won (Loser -_-)");
     else
         console.log("Tie");
     
-    console.log(`Player Score: ${playerScore}, Computer Score: ${computerScore}`);
 }
 
 game();
