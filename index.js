@@ -42,6 +42,7 @@ function playRound(playerSelection, computerSelection) {
     return theWinner;
 }
 
+//takes the winner and change the page to write the winner
 function displayWinner(winner) {
     const mainPage = document.querySelector('.secondPage');
     const winnerDisplayer = document.querySelector('.thirdPage');
@@ -74,6 +75,7 @@ function game() {
     displayedPlayerScore.textContent = playerScore;
     displayedComputerScore.textContent = computerScore;
 
+    //loop over the buttons and check if any of them is clicked
     const buttons = document.querySelectorAll(".buttons");
     buttons.forEach((button) => {
 
@@ -113,8 +115,3 @@ function startPlayingIndicator() {
 
 startPlayingIndicator();
 game();
-
-
-
-//
-//
