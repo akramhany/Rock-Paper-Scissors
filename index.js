@@ -42,25 +42,79 @@ function playRound(playerSelection, computerSelection) {
     return theWinner;
 }
 
+function displayWinner(winner) {
+    const mainPage = document.querySelector('.secondPage');
+    const winnerDisplayer = document.querySelector('.thirdPage');
+    const theWinner = document.createElement('p');
+
+    mainPage.style.display = "none";
+
+    theWinner.style.cssText = "display: flex;  justify-content: center;  align-items: center;  font-family: Lacquer;  font-size: 70px;"
+
+    if (winner.toLowerCase() === "player")
+    {
+        theWinner.textContent = "Player Wooooon!";
+    }
+    else
+    {
+        theWinner.textContent = "Computer Won :(";
+    }
+    winnerDisplayer.appendChild(theWinner);
+}
+
 //the main function of the game
 function game() {
 
     let playerScore = 0;
     let computerScore = 0;
 
-    
+    const displayedPlayerScore = document.querySelector(".playerScore");
+    const displayedComputerScore = document.querySelector(".computerScore");
 
-    //compare the scores of the player and the computer to determine who won
-    if (playerScore === 5)
-        console.log("Player Won YeeeeeeeeeeeeeY");
-    else if (computerScore === 5)
-        console.log("Computer Won (Loser -_-)");
-    else
-        console.log("Tie");
+    displayedPlayerScore.textContent = playerScore;
+    displayedComputerScore.textContent = computerScore;
+
+    const buttons = document.querySelectorAll(".buttons");
+    buttons.forEach((button) => {
+
+        button.addEventListener('click', () => {
+
+            let winner = playRound(button.className, getComputerChoice());
+
+            if (winner === "Player")    playerScore++;
+            else if (winner === "Computer")    computerScore++; 
+
+            if (playerScore === 5)
+                displayWinner("player");
+            else if (computerScore === 5)
+                displayWinner("computer");
+
+            displayedPlayerScore.textContent = playerScore;
+            displayedComputerScore.textContent = computerScore;
+        })
+
+    })
     
 }
 
+function startPlayingIndicator() {
+
+    const startGame = document.querySelector(".startGameButton");
+    startGame.addEventListener('click', () => {
+    const firstPage = document.querySelector(".firstPage");
+    const secondPage = document.querySelector(".secondPage");
+    
+    firstPage.style.display = 'none';
+    secondPage.style.display = 'inline';
+
+})
+}
+
+
+startPlayingIndicator();
 game();
+
+
 
 //
 //
